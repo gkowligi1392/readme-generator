@@ -1,17 +1,9 @@
-// TODO: Include packages needed for this application
-const fs = require("fs");
+// Include packages needed for this application
+
 const inquirer = require("inquirer");
+const writeToFile = require("./utils/fileManager");
 const questions = require("./utils/questions");
 const generateMarkdown = require("./utils/generateMarkdown");
-// TODO: Create an array of questions for user input
-
-// TODO: Create a function to write README file
-function writeToFile(filename, data) {
-    fs.writeFile(filename, data, (err) => {
-        if (err) throw err;
-        console.log("file README Done!!");
-    });
-}
 
 // Create a function to initialize app
 function init() {
@@ -21,16 +13,10 @@ function init() {
         .then(answers => {
             const data = generateMarkdown(answers);
             const filename = `./dist/README-${answers.title}.md`;
-            writeToFile(filename, data);
+            return writeToFile(filename, data);
         })
-        .catch(error => {
-            console.log(error);
-            if (error.isTtyError) {
-                // Prompt couldn't be rendered in the current environment
-            } else {
-                // Something else when wrong
-            }
-        });
+        .then((data) => console.log(data.message))
+        .catch((error) => console.log(error));
 }
 
 // Function call to initialize app
