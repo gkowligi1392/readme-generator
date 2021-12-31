@@ -4,9 +4,43 @@ function renderLicenseBadge(license) {
     if (license === "") {
         return "";
     }
-    return `
-    [![License: GPL v2](https://img.shields.io/badge/License-${license}-blue.svg)](https://www.gnu.org/licenses/old-licenses/${license}.en.html)
-    `;
+    const badges = [
+        {
+            link: "[!License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)",
+            value: "agpl-3.0",
+        },
+        {
+            link: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
+            value: "gpl-3.0",
+        },
+        {
+            link: "[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)",
+            value: "lgpl-3.0",
+        },
+        {
+            link: "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)",
+            value: "mpl-2.0",
+        },
+        {
+            link: "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+            value: "apache-2.0",
+        },
+        {
+            link: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
+            value: "mit",
+        },
+        {
+            link: "[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)",
+            value: "bsl-1.0",
+        },
+        {
+            link: "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)",
+            value: "unlicensname",
+        },
+    ];
+    
+    const badge = badges.filter((b) => b.value === license);
+    return badge[0].link;
 }
 
 // Create a function that returns the license link
@@ -71,6 +105,7 @@ function renderTableOfContent(data) {
 
 //Create a function to generate markdown for README
 function generateMarkdown(data) {
+    console.log(data);
     return `
     # ${data.title}
     ${renderLicenseBadge(data.license[0])}\n
