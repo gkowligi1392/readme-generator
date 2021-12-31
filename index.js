@@ -2,7 +2,7 @@
 
 const inquirer = require("inquirer");
 const writeToFile = require("./utils/fileManager");
-const questions = require("./utils/questions");
+const { questions } = require("./utils/data");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // Create a function to initialize app
