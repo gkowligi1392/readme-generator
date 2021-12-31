@@ -50,7 +50,6 @@ const questions = [
             { name: "GNU AGPLv3", value: "agpl-3.0" },
         { name: "GNU GPLv3", value: "gpl-3.0" },
         { name: "GNU LGPLv3", value: "lgpl-3.0" },
-        { name: "GNU LGPLv3", value: "lgpl-3.0" },
         { name: "Mozilla Public License 2.0", value: "mpl-2.0" },
         { name: "Apache License 2.0", value: "apache-2.0" },
         { name: "MIT License", value: "mit", checked: true },
