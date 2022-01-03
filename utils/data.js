@@ -43,7 +43,7 @@ const licenses = [
     },
     {
         name: "The Unlicense",
-        value: "unlicensname",
+        value: "unlicense",
         badge:
             "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)",
     },
@@ -53,50 +53,50 @@ const questions = [
     {
         type: "input",
         name: "title",
-        message: "What is the title of your project?",
+        message: "What's your project title?(Required)",
         validate(value) {
             if (value) return true;
-            return "Please enter a title for your project";
+            return "Please Provide a Project Title";
         },
     },
     {
         type: "input",
         name: "description",
-        message: "Please enter a description for your project",
+        message: "Project Description?(Required)",
         validate(value) {
             if (value) return true;
-            return "Please enter a description for your project";
+            return "Please Provide a Project Description";
         },
     },
     {
         type: "input",
         name: "installation",
-        message: "Please enter installation instructions for your project",
+        message: "Project installation instructions?",
     },
     {
         type: "input",
         name: "usage",
-        message: "Please enter usage instructions for your project",
+        message: "Project usage?",
     },
     {
         type: "input",
         name: "contributing",
-        message: "Please enter contributing instructions for your project",
+        message: "Project Contributing?",
     },
     {
         type: "input",
         name: "test",
-        message: "Please enter test instructions for your project",
+        message: "Project test information?",
     },
     {
         type: "input",
         name: "questions",
-        message: "Please enter any questions for your project",
+        message: "Project Questions Information?",
     },
     {
-        type: checkbox,
+        type: "list",
         name: "license",
-        message: "Please select a license for your project",
+        message: "Select the license for your project?",
         choices: licenses,
         validate(answer) {
             if (answer.length === 1) return true;
@@ -109,26 +109,26 @@ const questions = [
         message: "Github username?(Required)",
         validate(value) {
             if (value) {
-                //TODO: Validate if the username exists in github
-                return true;
+            //TODO: Validate if the username exists in github
+            return true;
             }
             return "Please Provide a Github username";
-            },
         },
-        {
-            type: "input",
-            name: "email",
-            message: "Your email?(Required)",
-            validate(value) {
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Your email?(Required)",
+        validate(value) {
             const pass = value.match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             );
             if (pass) {
-                return true;
+            return true;
             }
             return "Please enter a valid email address";
-            },
         },
-    ];
-    
-    module.exports = { questions, licenses };
+    },
+];
+
+module.exports = { questions, licenses };

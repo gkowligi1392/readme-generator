@@ -1,6 +1,6 @@
 const { licenses } = require("./data");
 
-// Create a function that returns a license badge based on which license is passed in
+//Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
     if (license === "") {
@@ -10,13 +10,13 @@ function renderLicenseBadge(license) {
     return licenseInfo[0].badge;
 }
 
-// Create a function that returns the license link
+//Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
     return `(https://choosealicense.com/licenses/${license}/)`;
 }
 
-// TODO: Create a function that returns the license section of README
+//Create a function that returns the license section of README
 // If there is no license, return an empty string
 function getLicenseName(license) {
     if (license === "") {
@@ -49,6 +49,7 @@ function renderSection(sectionTitle, data) {
 
 function renderSectionQuestions(data, githubUsername) {
     if (!data) return "";
+
     return `
     ## Questions\n
     ${data}\n
@@ -56,7 +57,7 @@ function renderSectionQuestions(data, githubUsername) {
     `;
 }
 
-//render the table of Contents
+//renden the table of Content
 function renderTableOfContent(data) {
     let temp = "## Table of Contents\n";
     if (data.installation) temp += `* [Installation](#installation)\n`;
@@ -71,19 +72,30 @@ function renderTableOfContent(data) {
 
 //Create a function to generate markdown for README
 function generateMarkdown(data) {
-    console.log(data);
+    const {
+        username,
+        email,
+        title,
+        description,
+        installation,
+        usage,
+        contributing,
+        questions,
+        license,
+        test,
+    } = data;
     return `
-    # ${data.title}
-    ${renderLicenseBadge(data.license[0])}\n
+    # ${title}
+    ${renderLicenseBadge(license)}\n
     ## Description\n
-    ${data.description}\n
+    ${description}\n
     ${renderTableOfContent(data)}
-    ${renderSection("Installation", data.installation)}\n
-    ${renderSection("Usage", data.usage)}\n
-    ${renderSection("Contributing", data.contributing)}\n
-    ${renderSection("Tests", data.tests)}\n
-    ${renderSectionQuestions(data.questions, data.username)}\n
-    ${renderLicenseSection(data.license[0], data.email)}
+    ${renderSection("Installation", installation)}\n
+    ${renderSection("Usage", usage)}\n
+    ${renderSection("Contributing", contributing)}\n
+    ${renderSection("Tests", test)}\n
+    ${renderSectionQuestions(questions, username)}\n
+    ${renderLicenseSection(license, email)}
     `;
 }
 
