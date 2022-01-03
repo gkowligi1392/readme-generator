@@ -8,7 +8,7 @@ This project generates a README.md file for your github repository. This project
 
 [Click here to watch the Walkthrough Video](https://youtu.be/v4gkvWexwrg)
 
-[Sample README.md file](./dist/README-readme generator.md)
+[Sample README.md file]("./dist/README-readme generator.md")
 
 ## Table of Contents
 
